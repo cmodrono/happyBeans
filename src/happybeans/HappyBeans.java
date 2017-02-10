@@ -7,15 +7,20 @@ package happybeans;
 
 //class signature
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HappyBeans {
 
+    static Scanner reader = new Scanner(System.in);
+    static String choice;
+    
     //main method
     public static void main(String[] args) {
+        
         boolean running = true;
-        Scanner reader = new Scanner(System.in);
-        int choice;
+        
+        ArrayList dealerships = new ArrayList();
         
         while (running) {
         
@@ -25,28 +30,37 @@ public class HappyBeans {
             System.out.println("    3.) Print Dealerships");
             System.out.println("    4.) QUIT");
         
-            System.out.print("> ");
-            choice = reader.nextInt();
+            getResponse();
             
-            if (choice == 1) {
+            
+            // bool || bool
+            // bool && bool
+            if (choice.equals("1") || choice.toLowerCase().equals("one")) {
                 System.out.println("You suck bro figure it out yoursrlf!!! ;)\n");
             }
             
-            else if (choice == 2) {
+            else if (choice.equals("2") || choice.toLowerCase().equals("two")) {
                 System.out.println("What would you like to do?");
                 System.out.println("    1.) choose dealership");
                 System.out.println("    2.) create new dealership");
                 System.out.println("    3.) ..");
                 
                 while (true) {
-                    System.out.print("> ");
-                    choice = reader.nextInt();
+                    getResponse();
                     
-                    if (choice == 1) {
+                    if (choice.equals("1") || choice.toLowerCase().equals("one")) {
                         //TODO submenu
-                    } else if (choice == 2) {
-                        //TODO submenu
-                    } else if (choice == 3) {
+                    } else if (choice.equals("2") || choice.toLowerCase().equals("two")) {
+                        
+                        System.out.println("What would you like your new dealership to be named?");
+                        getResponse();
+                        String tempName = choice;
+                        
+                        System.out.println("Where is " + tempName + " located?");
+                        getResponse();
+                        String tempLoc = choice;
+                        
+                    } else if (choice.equals("3") || choice.toLowerCase().equals("three")) {
                         break;
                     }
                 }
@@ -54,7 +68,7 @@ public class HappyBeans {
             
             //TODO choice 3
             
-            else if (choice == 4) {
+            else if (choice.equals("4") || choice.toLowerCase().equals("four")) {
                 System.out.println("YOU TAKE CARE NOW!!!");
                 running = false;
             }
@@ -82,6 +96,10 @@ public class HappyBeans {
 //        System.out.println(dTest);
         
         
+    }
+    public static void getResponse() {
+        System.out.print("> ");
+        choice = reader.nextLine();
     }
     
 }
